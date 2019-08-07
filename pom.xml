@@ -92,12 +92,12 @@
     </build>
     <distributionManagement>
          <repository>
-             <id>deployment</id>
+             <id>nexus-releases</id>
              <name>Internal Releases</name>
              <url>http://nexus.local:8081/repository/maven-releases/</url>
          </repository>
          <snapshotRepository>
-             <id>deployment</id>
+             <id>nexus-snapshots</id>
              <name>Internal Snapshot</name>
              <url>http://nexus.local:8081/repository/maven-snapshots/</url>
          </snapshotRepository>
