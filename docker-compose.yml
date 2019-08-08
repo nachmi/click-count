@@ -1,0 +1,38 @@
+version: '3.5'
+
+services:
+  web:
+    image: mnachmi/click_count
+    ports:
+     - "8080:8080"
+    container_name: "click_count"
+    hostname: xebia.click-count
+    environment:
+      REDIS_HOST : '172.22.0.102'
+      REDIS_PORT : '6379'
+    links:
+      - redis
+    depends_on:
+      - redis
+    networks:
+      redis-net:
+        ipv4_address: 172.22.0.100
+
+  redis:
+    image:  redis
+    hostname: redis_server
+    container_name: "redis_server"
+    ports:
+      - "6379:6379"
+    networks:
+      redis-net:
+        ipv4_address: 172.22.0.102
+
+
+networks:
+  redis-net:
+    external: true
+    ipam:
+      driver: default
+      config:
+       - subnet: 172.22.0.0/16
